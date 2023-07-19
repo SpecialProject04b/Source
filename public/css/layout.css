@@ -22,7 +22,10 @@
 /* a. General Styles
 /* ------------------------------------------------------------------ */
 
-body { background: #0f0f0f; }
+body {
+    background: #858282; 
+    /* background: #ffffff;  */
+   }
 
 /* ------------------------------------------------------------------ */
 /* b. Header Styles
@@ -33,7 +36,8 @@ header {
    height: 800px;
    min-height: 500px;
    width: 100%;
-   background: #161415 url(../images/header-background.jpg) no-repeat top center;
+   /* background: #161415 url(../images/header-background.jpg) no-repeat top center; */
+   background-color: transparent;
    background-size: cover !important;
 	-webkit-background-size: cover !important;
    text-align: center;
@@ -118,6 +122,28 @@ header .scrolldown a {
    transition: all .3s ease-in-out;
 }
 header .scrolldown a:hover { color: #11ABB0; }
+
+
+/* Modified stuff to make the 3D background work
+--------------------------------------------------------------------- */
+#3dBackground{
+   z-index: 10; 
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   width: 100%;
+   height: 100%;
+}
+
+#3dBackgroundForegroundText{
+   position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
 
 /* primary navigation
 --------------------------------------------------------------------- */

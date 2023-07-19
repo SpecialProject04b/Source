@@ -2,6 +2,26 @@ import React, { Component } from 'react';
 export default class Header extends Component {
   render() {
     let resumeData = this.props.resumeData;
+
+    const backgroundStyles = {
+      zIndex: 10,
+      position: 'absolute',
+      top: '60%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      width: '100%',
+      height: '100%',
+    };
+  
+    const foregroundTextStyles = {
+      position: 'absolute',
+      top: '20%',
+      left: 0,
+      width: '100%',
+      height: '100%',
+      zIndex: 20,
+    };
+
     return (
       <React.Fragment>
       
@@ -20,7 +40,7 @@ export default class Header extends Component {
          </nav>
 
          <div className="row banner">
-            <div className="banner-text">
+            <div className="banner-text" id="3dBackgroundForegroundText" style={foregroundTextStyles}>
                <h1 className="responsive-headline">{resumeData.name}</h1>
                <h3 style={{color:'#fff', fontFamily:'sans-serif '}}>{resumeData.roleDescription}
                </h3>
@@ -43,7 +63,11 @@ export default class Header extends Component {
          <p className="scrolldown">
             <a className="smoothscroll" href="#about"><i className="icon-down-circle"></i></a>
          </p>
-
+        
+        <div id="3dBackground" style={backgroundStyles}>
+          <iframe  src="https://app.vectary.com/p/0QIOv3TQQwt0Zd3xry96Z4" frameBorder="0" width="100%" height="650"></iframe>
+        </div>
+      
       </header>
       </React.Fragment>
     );
