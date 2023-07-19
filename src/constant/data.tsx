@@ -14,11 +14,11 @@ export const data: Data[] = [
   { src: "/Images/898034.23.jpg" },
   { src: "/Images/898034.24.jpg" },
   { src: "/Images/898034.27.jpg" },
-  { src: "/Images/898034.ii.jpg" },
-  { src: "/Images/898034.ix.jpg" },
-  { src: "/Images/898034.v.jpg" },
-  { src: "/Images/898034.vi.jpg" },
-  { src: "/Images/898034.vii.jpg" },
+  { src: "/Images/898034.28.ii.jpg" },
+  { src: "/Images/898034.28.ix.jpg" },
+  { src: "/Images/898034.28.v.jpg" },
+  { src: "/Images/898034.28.vi.jpg" },
+  { src: "/Images/898034.28.vii.jpg" },
 
 
 ];
