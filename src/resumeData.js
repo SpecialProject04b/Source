@@ -1,10 +1,10 @@
 let resumeData = {
     "imagebaseurl":"https://rbhatia46.github.io/",
-    "name": "Rahul Bhatia",
-    "role": "Frontend Developer and Data Scientist",
+    "name": "Alexander \"Greek\" Thomson",
+    "role": "Architect",
     "linkedinId":"Your LinkedIn Id",
     "skypeid": "Your skypeid",
-    "roleDescription": "I like dabbling in various parts of frontend development and like to learn about new technologies, write technical articles or simply play games in my free time.",
+    "roleDescription": "An eminent Scottish architect and architectural theorist who was a pioneer in sustainable building. Although his work was published in the architectural press of his day, it was little appreciated outside Glasgow during his lifetime.",
     "socialLinks":[
         {
           "name":"linkedin",
