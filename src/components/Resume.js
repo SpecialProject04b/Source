@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import Header from './Header';
 export default  class Resume extends Component {
   render() {
     let resumeData = this.props.resumeData;
     return (
       <section id="resume">
-
+        <Header resumeData={resumeData}/> 
          <div className="row education">
 
             <div className="three columns header-col">

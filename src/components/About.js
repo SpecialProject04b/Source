@@ -1,6 +1,7 @@
 import "./App.css";
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { data } from "./constant/data";
+import Header from './Header';
 
 import React, { Component } from 'react';
 export default class About extends Component {
@@ -8,6 +9,7 @@ export default class About extends Component {
     let resumeData = this.props.resumeData;
     return (
       <section id="about">
+        <Header resumeData={resumeData}/>
         <h1>Collection Gallery</h1>
         <p></p>
         <div className="flexbox gallery">

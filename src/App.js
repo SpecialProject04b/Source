@@ -15,7 +15,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <Header resumeData={resumeData}/>
+        {/* <Header resumeData={resumeData}/> */}
         <Routes>
           <Route path="/" element={<Home resumeData={resumeData}/>} />
           <Route path="/about" element={<About resumeData={resumeData}/>} />

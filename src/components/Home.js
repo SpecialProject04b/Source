@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Header from './Header';
 
 export default class Home extends Component {
   render() {
@@ -26,7 +27,7 @@ export default class Home extends Component {
 
     return (
       <React.Fragment>
-
+          <Header resumeData={resumeData}/>
           <div className="row banner" style={foregroundTextStyles}>
             <div className="banner-text">
               <h1 className="responsive-headline">{resumeData.name}</h1>

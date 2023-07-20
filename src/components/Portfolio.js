@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import Header from './Header';
 export default class Porfolio extends Component {
   render() {
     let resumeData = this.props.resumeData;
     return (
       <section id="portfolio">
+      <Header resumeData={resumeData}/>
       <div className="row">
         <div className="twelve columns collapsed">
           <h1>Check Out Some of My Works.</h1>

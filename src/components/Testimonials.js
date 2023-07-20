@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import Header from './Header';
 export default class Testimonials extends Component {
   render() {
     let resumeData = this.props.resumeData;
     return (
       <section id="testimonials">
+        <Header resumeData={resumeData}/>
         <div className="text-container">
           <div className="row">
             <div className="two columns header-col">
