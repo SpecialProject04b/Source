@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from './Header';
+import Footer from './Footer';
 export default class Testimonials extends Component {
   render() {
     let resumeData = this.props.resumeData;
@@ -33,6 +34,7 @@ export default class Testimonials extends Component {
             </div> {/* div.flex-container ends */}
           </div> {/* row ends */}
         </div>  {/* text-container ends */}
+        <Footer resumeData={resumeData}/>
       </section>
         );
   }

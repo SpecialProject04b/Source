@@ -2,18 +2,18 @@ import "./App.css";
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { data } from "./constant/data";
 import Header from './Header';
+import Footer from './Footer';
 
 import React, { Component } from 'react';
 export default class About extends Component {
   render() {
     let resumeData = this.props.resumeData;
     return (
-      <section id="about">
-        <Header resumeData={resumeData}/>
-        <h1>Collection Gallery</h1>
-        <p></p>
+      <div id="page" style={{display:"flex", flexDirection:"column", justifyContent:"space-between", height:"100vh"}}>
+        <div><Header resumeData={resumeData}/></div>
+        <div><h1 style={{color:"white", paddingLeft:"30px"}}>Collection Gallery</h1></div>
         <div className="flexbox gallery">
-            <PhotoProvider  speed={() => 800} 
+            <PhotoProvider  speed={() => 300} 
                             easing={(type) => (type === 2 ? 'cubic-bezier(.17,.67,.83,.67)' : 'cubic-bezier(0.34, 1.56, 0.64, 1)')}
                             toolbarRender={({ onScale, scale }) => {
                               return (
@@ -30,7 +30,8 @@ export default class About extends Component {
             ))} 
             </PhotoProvider>
         </div>
-      </section>
+        <div><Footer resumeData={resumeData}/></div>
+      </div>
     );
   }
 }

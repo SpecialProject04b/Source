@@ -24,7 +24,7 @@ class App extends Component {
           <Route path="/testimonials" element={<Testimonials resumeData={resumeData}/>} />
           <Route path="/contact" element={<ContactUs resumeData={resumeData}/>} />
         </Routes>
-        <Footer resumeData={resumeData}/>
+        {/* <Footer resumeData={resumeData}/> */}
       </Router>
     );
   }

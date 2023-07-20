@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from './Header';
+import Footer from './Footer';
 export default  class Resume extends Component {
   render() {
     let resumeData = this.props.resumeData;
@@ -94,7 +95,7 @@ export default  class Resume extends Component {
    			</div>
 
          </div>
-
+         <div><Footer resumeData={resumeData}/></div>
       </section>
     );
   }
