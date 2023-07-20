@@ -1,6 +1,4 @@
 import "./App.css";
-
-import LazyImage from "./LazyImage/LazyImage";
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { data } from "./constant/data";
 

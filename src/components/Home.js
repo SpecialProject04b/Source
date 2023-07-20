@@ -26,11 +26,7 @@ export default class Home extends Component {
 
     return (
       <React.Fragment>
-        <header id="home">
-          <nav id="nav-wrap">
-            <a className="mobile-btn" href="#nav-wrap" title="Show navigation">Show navigation</a>
-            <a className="mobile-btn" href="#" title="Hide navigation">Hide navigation</a>
-          </nav>
+
           <div className="row banner" style={foregroundTextStyles}>
             <div className="banner-text">
               <h1 className="responsive-headline">{resumeData.name}</h1>
@@ -55,7 +51,7 @@ export default class Home extends Component {
           <div id="3dBackground" style={backgroundStyles}>
             <iframe src="https://app.vectary.com/p/0QIOv3TQQwt0Zd3xry96Z4" frameBorder="0" width="100%" height="650"></iframe>
           </div>
-        </header>
+
       </React.Fragment>
     );
   }
