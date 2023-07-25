@@ -17,7 +17,7 @@ export default class Header extends Component {
               <li className="current"><Link to="/">Home</Link></li>
               <li><Link to="/about">Our Collection</Link></li>
               <li><Link to="/resume">Thomson</Link></li>
-              <li><Link to="/portfolio">NewsLetter</Link></li>
+              <li><Link to="/NewsLetter">NewsLetter</Link></li>
               {/* <li><Link to="/portfolio">Works</Link></li>
               <li><Link to="/testimonials">Testimonials</Link></li> */}
               <li><Link to="/contact">Contact Us</Link></li>
