@@ -8,12 +8,10 @@ export default class Home extends Component {
   render() {
     let resumeData = this.props.resumeData;
 
-    const backgroundStyles = {
+    const iframeStyle = {
       zIndex: -1,
       position: 'absolute',
       top: '10%',
-      // left: '50%',
-      // transform: 'translate(-50%, -70%)',
       width: '100%',
       animation: 'floatAnimation 3s infinite'
     };
@@ -23,7 +21,6 @@ export default class Home extends Component {
       position: 'absolute',
       top: '55%',
       left: '1%',
-      // transform: 'translate(-50%, -70%)',
       width: '350px',
       height:'310px',
       textAlign: 'left',
@@ -32,6 +29,27 @@ export default class Home extends Component {
       
       
     };
+
+    const homepageBoxH2 = {
+      marginTop:'50px',
+      fontSize:'24px',
+      marginLeft:'20px',
+      lineHeight:'1.5',
+      width:'300px'
+    };
+
+    const homepageBoxP = {
+      fontSize:'16px',
+      marginLeft:'20px', 
+      lineHeight:'1.6',
+      width:'300px'
+    };
+
+    const homepageBoxButton = {
+      marginLeft:'20px',
+      width:'300px'
+    };
+
 
     const bannerText ={
       zIndex: -2,
@@ -42,8 +60,14 @@ export default class Home extends Component {
       color: 'black',
       letterSpacing: '55px',
       fontSize: '64px',
-      lineHeight: '2.6'
-
+      lineHeight: '2.6',
+      '@media only screen and (max-width: 1440px)': {
+        fontSize: '56px',
+      },
+      '@media only screen and (max-width: 1024px)': {
+        backgroundColor: 'red',
+        fontSize: '24px',
+      },
     }
 
     const bannerTextName ={
@@ -76,26 +100,25 @@ export default class Home extends Component {
     return (
       <React.Fragment>
 
-          <div id="3dBackground" style={backgroundStyles}>
-            <iframe src="https://app.vectary.com/p/0QIOv3TQQwt0Zd3xry96Z4" frameBorder="0" width="100%" height="650"></iframe>
+          <div style={iframeStyle}>
+            <iframe src="https://app.vectary.com/p/0QIOv3TQQwt0Zd3xry96Z4" width="100%" height="650"></iframe>
           </div>
 
           <div id="page">
             <div><Header resumeData={resumeData}/></div>
             <div style={homepageBox}>
-              <h2 style={{marginTop:'50px',fontSize:'24px',marginLeft:'20px',lineHeight:'1.5',width:'300px'}}>
+              <h2 style={homepageBoxH2}>
                 Welcome to 
                 Mitchell library's collection
               </h2>
-              <p style={{fontSize:'16px',marginLeft:'20px', lineHeight:'1.6',width:'300px'}}>
+              <p style={homepageBoxP}>
                 Find out more about Alexander "Greek" Thomson's works 
                 and his contribution to glasgow.
               </p>
-              <button style={{marginLeft:'20px',width:'300px'}}>
+              <button style={homepageBoxButton}>
                 Find Out More
               </button>
           </div>
-
           <p style={bannerText}>
             VISIONARY
             <span style={spanText}>"GREEK"</span><br/>
@@ -103,6 +126,7 @@ export default class Home extends Component {
           
             
           </p>
+
           <p style={bannerTextName}>
             ALEXANDER THOMSON
           </p>

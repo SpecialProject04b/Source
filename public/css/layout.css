@@ -188,7 +188,12 @@ ul#nav li {
    margin-left: 5%;
    margin-right: 5%;
 }
-
+@media only screen and (max-width: 1024px) {
+   ul#nav li {
+      margin-left: 2%;
+      margin-right: 2%;
+   }
+}
 /* Links */
 ul#nav li a {
 
