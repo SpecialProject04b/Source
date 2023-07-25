@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component} from 'react';
 import Header from './Header';
 import Footer from './Footer';
 
@@ -11,18 +11,24 @@ export default class Home extends Component {
     const iframeStyle = {
       zIndex: -1,
       position: 'absolute',
-      top: '10%',
+      top: '5%',
       width: '100%',
+      height: '90%',
       animation: 'floatAnimation 3s infinite'
     };
+
+    const iframe3Dmodel = {
+      width: '100%',
+      height: '100%'
+    }
 
     const homepageBox = {
       zIndex: 2,
       position: 'absolute',
       top: '55%',
       left: '1%',
-      width: '350px',
-      height:'310px',
+      width: '25%',
+      height:'40%',
       textAlign: 'left',
       backgroundColor: 'black',
       color:'white',
@@ -47,11 +53,11 @@ export default class Home extends Component {
 
     const homepageBoxButton = {
       marginLeft:'20px',
-      width:'300px'
+      width:'80%'
     };
 
 
-    const bannerText ={
+    const bannerText = {
       zIndex: -2,
       position: 'absolute',
       top: '10%',
@@ -59,22 +65,18 @@ export default class Home extends Component {
       textAlign: 'center',
       color: 'black',
       letterSpacing: '55px',
-      fontSize: '64px',
+      fontSize:'64px',
       lineHeight: '2.6',
-      '@media only screen and (max-width: 1440px)': {
-        fontSize: '56px',
-      },
-      '@media only screen and (max-width: 1024px)': {
-        backgroundColor: 'red',
-        fontSize: '24px',
-      },
+      fontWeight:'bold'
     }
+      
+    
 
     const bannerTextName ={
       zIndex: 2,
       position: 'absolute',
-      top: '60%',
-      left: '30%',
+      top: '50%',
+      left: '50%',
       
       color: 'white',
       
@@ -84,10 +86,12 @@ export default class Home extends Component {
        1px -1px 0 black,
       -1px 1px 0 black,
        1px 1px 0 black`,
-
+       fontWeight:'bold',
+       lineHeight: '1.6'
     }
 
     const spanText ={
+     
       color: 'white',
       textShadow: `
       -1px -1px 0 black,
@@ -101,9 +105,22 @@ export default class Home extends Component {
       <React.Fragment>
 
           <div style={iframeStyle}>
-            <iframe src="https://app.vectary.com/p/0QIOv3TQQwt0Zd3xry96Z4" width="100%" height="650"></iframe>
+            <iframe src="https://app.vectary.com/p/0QIOv3TQQwt0Zd3xry96Z4" style={iframe3Dmodel}></iframe>
           </div>
-
+          <div className="area" >
+            <ul className="circles">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+            </ul>
+          </div >
           <div id="page">
             <div><Header resumeData={resumeData}/></div>
             <div style={homepageBox}>
@@ -130,7 +147,8 @@ export default class Home extends Component {
           <p style={bannerTextName}>
             ALEXANDER THOMSON
           </p>
-            
+          
+          
 
               {/* <div><Header resumeData={resumeData}/></div>
               <div className="row banner">
