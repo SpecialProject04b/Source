@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Header from './Header';
 import Footer from './Footer';
-import axios from 'axios';  // You will need to install axios using npm install axios
+import axios from 'axios';  
 
 const NewsLetter = ({ resumeData }) => {
   const [scrapedData, setScrapedData] = useState([]);
@@ -10,40 +10,33 @@ const NewsLetter = ({ resumeData }) => {
     axios.get('http://localhost:3001/scrape') 
       .then(response => {
         setScrapedData(response.data);
-        console.log(scrapedData); // Check the data
       })
       .catch(error => {
         console.log(error);
       });
   }, []);
 
-  useEffect(() => {
-    console.log(scrapedData);
-  }, [scrapedData]);
-
-
   return (
     <div id="page" style={{display:"flex", flexDirection:"column", justifyContent:"space-between", height:"100vh"}}>
       <Header resumeData={resumeData}/>
       <div className="row">
         <div className="twelve columns collapsed">
-          <h1>Check Out Some of My Works.</h1>
-          <div id="portfolio-wrapper" className="bgrid-quarters s-bgrid-thirds cf">
+        <h1 style={{marginTop: '50px', color: '#61dafb', textAlign: 'center'}}>
+          News Directly from{' '}
+          <a href="https://www.alexanderthomsonsociety.org.uk/?cat=54" target="_blank" rel="noopener noreferrer">
+            Alexander Thomson Society
+          </a>
+        </h1>
+          <div id="portfolio-wrapper" style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around'}}>
           {
-            scrapedData.map((item, index)=>{
-              return(
-                <div className="columns portfolio-item" key={index}>
-                  <div className="item-wrap">
-                    <a href={item.link}>
-                      <img src={item.imageUrl} alt={item.title} className="item-img"/>
-                      <div className="overlay">
-                        <div className="portfolio-item-meta">
-                          <h5>{item.title}</h5>
-                          <p>{item.summary}</p>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
+            scrapedData.map((item, index) => {
+              return (
+                <div key={index} style={{width: '30%', margin: '1%', border: '1px solid #ddd', borderRadius: '5px', padding: '10px'}}>
+                  <a href={item.link}>
+                    <img src={item.imageUrl} alt={item.title} style={{width: '100%', height: '200px', objectFit: 'cover'}}/>
+                    <h5>{item.title}</h5>
+                    <p>{item.summary}</p>
+                  </a>
                 </div>
               )
             })
