@@ -144,7 +144,7 @@ export default class Home extends Component {
             
           </p>
 
-          <p style={bannerTextName}>
+          <p style={bannerTextName} className='textHover'>
             ALEXANDER THOMSON
           </p>
           

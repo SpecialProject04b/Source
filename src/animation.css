@@ -144,3 +144,16 @@
 
 }
 
+.textHover:before{
+    content:"ALEXANDER THOMSON";
+    position:absolute;
+    color:#262626;
+    top:0;
+    left:0;
+    width:0%;
+    overflow:hidden;
+    transition:all 0.5s;
+}
+.textHover:hover:before{
+    width:100%;
+}

@@ -11,10 +11,14 @@ import Footer from './components/Footer';
 import resumeData from './resumeData';
 import 'react-photo-view/dist/react-photo-view.css';
 
+
+
 class App extends Component {
   render() {
     return (
+      
       <Router>
+        
         {/* <Header resumeData={resumeData}/> */}
         <Routes>
           <Route path="/" element={<Home resumeData={resumeData}/>} />
@@ -25,7 +29,9 @@ class App extends Component {
           <Route path="/contact" element={<ContactUs resumeData={resumeData}/>} />
         </Routes>
         {/* <Footer resumeData={resumeData}/> */}
+        
       </Router>
+      
     );
   }
 }
