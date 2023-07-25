@@ -5,16 +5,31 @@ import axios from 'axios';
 
 const NewsLetter = ({ resumeData }) => {
   const [scrapedData, setScrapedData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
 
-  useEffect(() => {
-    axios.get('http://localhost:3001/scrape') 
+  const fetchData = (page) => {
+    axios.get(`http://localhost:3001/scrape/${page}`) 
       .then(response => {
         setScrapedData(response.data);
       })
       .catch(error => {
         console.log(error);
       });
-  }, []);
+  };
+
+  useEffect(() => {
+    fetchData(currentPage);
+  }, [currentPage]);
+
+  const nextPage = () => {
+    setCurrentPage(prevPage => prevPage + 1);
+  };
+
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(prevPage => prevPage - 1);
+    }
+  };
 
   return (
     <div id="page" style={{display:"flex", flexDirection:"column", justifyContent:"space-between", height:"100vh"}}>
@@ -33,7 +48,11 @@ const NewsLetter = ({ resumeData }) => {
               return (
                 <div key={index} style={{width: '30%', margin: '1%', border: '1px solid #ddd', borderRadius: '5px', padding: '10px'}}>
                   <a href={item.link}>
-                    <img src={item.imageUrl} alt={item.title} style={{width: '100%', height: '200px', objectFit: 'cover'}}/>
+                    <img 
+                      src={item.imageUrl ? item.imageUrl : '/unavailable.jpeg'} 
+                      alt={item.title} 
+                      style={{width: '100%', height: '200px', objectFit: 'cover'}}
+                    />
                     <h5 style = {{color: '#61dafb'}}> {item.title} </h5>
                     <p>{item.summary}</p>
                   </a>
@@ -41,6 +60,14 @@ const NewsLetter = ({ resumeData }) => {
               )
             })
           }
+          </div>
+          <div style={{textAlign: 'center', marginBottom: '20px'}}>
+            <button onClick={prevPage} disabled={currentPage === 1}>
+              Previous Page
+            </button>
+            <button onClick={nextPage}>
+              Next Page
+            </button>
           </div>
         </div>
       </div>
