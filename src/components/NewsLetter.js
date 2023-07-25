@@ -5,16 +5,31 @@ import axios from 'axios';
 
 const NewsLetter = ({ resumeData }) => {
   const [scrapedData, setScrapedData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
 
-  useEffect(() => {
-    axios.get('http://localhost:3001/scrape') 
+  const fetchData = (page) => {
+    axios.get(`http://localhost:3001/scrape/${page}`) 
       .then(response => {
         setScrapedData(response.data);
       })
       .catch(error => {
         console.log(error);
       });
-  }, []);
+  };
+
+  useEffect(() => {
+    fetchData(currentPage);
+  }, [currentPage]);
+
+  const nextPage = () => {
+    setCurrentPage(prevPage => prevPage + 1);
+  };
+
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(prevPage => prevPage - 1);
+    }
+  };
 
   return (
     <div id="page" style={{display:"flex", flexDirection:"column", justifyContent:"space-between", height:"100vh"}}>
@@ -42,10 +57,17 @@ const NewsLetter = ({ resumeData }) => {
                     <p>{item.summary}</p>
                   </a>
                 </div>
-
               )
             })
           }
+          </div>
+          <div style={{textAlign: 'center', marginBottom: '20px'}}>
+            <button onClick={prevPage} disabled={currentPage === 1}>
+              Previous Page
+            </button>
+            <button onClick={nextPage}>
+              Next Page
+            </button>
           </div>
         </div>
       </div>

@@ -2,24 +2,22 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const Reactions = require('./reactionSchema.js');
-const cors = require('cors');  //  npm install cors
-
-const app = express(); // Declare 'app' before using it.
-const port = process.env.PORT || 3001;
-
-// This will allow all CORS requests
-app.use(cors());
-
+const cors = require('cors'); 
 const puppeteer = require('puppeteer');
 
+const app = express(); 
+const port = process.env.PORT || 3001;
 
-app.get('/scrape', async (req, res) => {
-    const url = "https://www.alexanderthomsonsociety.org.uk/?cat=54";
+app.use(cors());
+
+app.get('/scrape/:page', async (req, res) => {
+    const pageToScrape = req.params.page;
+    const url = `https://www.alexanderthomsonsociety.org.uk/?paged=${pageToScrape}&cat=54`;
 
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.goto(url);
-    await page.waitForTimeout(5000); // wait 5 seconds
+    await page.waitForTimeout(5000); 
 
     const data = await page.evaluate(() => {
         let newsItems = [];
