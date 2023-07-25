@@ -33,7 +33,7 @@ app.get('/scrape', async (req, res) => {
             let title = titleElement ? titleElement.innerText : null;
             let link = titleElement ? titleElement.href : null;
             let summary = summaryElement ? summaryElement.innerText : null;
-            let imageUrl = imageElement ? imageElement.src : null;
+            let imageUrl = imageElement ? imageElement.dataset.src : null;
 
             newsItems.push({
                 title: title,
