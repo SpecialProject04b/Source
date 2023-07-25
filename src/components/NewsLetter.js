@@ -34,7 +34,7 @@ const NewsLetter = ({ resumeData }) => {
                 <div key={index} style={{width: '30%', margin: '1%', border: '1px solid #ddd', borderRadius: '5px', padding: '10px'}}>
                   <a href={item.link}>
                     <img src={item.imageUrl} alt={item.title} style={{width: '100%', height: '200px', objectFit: 'cover'}}/>
-                    <h5>{item.title}</h5>
+                    <h5 style = {{color: '#61dafb'}}> {item.title} </h5>
                     <p>{item.summary}</p>
                   </a>
                 </div>
