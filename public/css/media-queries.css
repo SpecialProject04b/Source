@@ -1,9 +1,5 @@
 /* ==================================================================
-
-*   Ceevee Media Queries
-*   url: styleshout.com
-*   03-18-2014
-
+*   Media Queries
 /* ================================================================== */
 
 
@@ -62,23 +58,6 @@
    #resume h1 { font: 16px/24px 'opensans-bold', sans-serif; }
    #resume .main-col { padding-right: 5%; }   
 
-   /* Testimonials Section
-   ------------------------------------------------------------------- */
-   #testimonials .header-col h1:before {
-      font-size: 66px;
-      line-height: 66px;
-   }
-   #testimonials blockquote p {
-      font-size: 22px;
-      line-height: 46px;      
-   }
-
-    /* Call to Action Section
-   ------------------------------------------------------------------- */
-   #call-to-action .header-col h1:before {
-      font-size: 66px;
-      line-height: 66px;
-   }
 
    /* Contact Section
    ------------------------------------------------------------------- */
@@ -90,6 +69,23 @@
    #contact .section-head p.lead { font: 17px/33px opensans-light, sans-serif; }
 
 
+   /* Testimonials Section
+   ------------------------------------------------------------------- */
+   /* #testimonials .header-col h1:before {
+      font-size: 66px;
+      line-height: 66px;
+   }
+   #testimonials blockquote p {
+      font-size: 22px;
+      line-height: 46px;      
+   } */
+
+    /* Call to Action Section
+   ------------------------------------------------------------------- */
+   /* #call-to-action .header-col h1:before {
+      font-size: 66px;
+      line-height: 66px;
+   } */
 }
 
 /* mobile wide/smaller tablets

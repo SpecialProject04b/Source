@@ -1,10 +1,62 @@
 const express = require('express');
 const path = require('path');
-const mongoose =require('mongoose');
+const mongoose = require('mongoose');
 const Reactions = require('./reactionSchema.js');
+const cors = require('cors'); 
+const puppeteer = require('puppeteer');
 
-const app = express();
-const port = process.env.PORT || 3000; 
+const app = express(); 
+const port = process.env.PORT || 3001;
+
+app.use(cors());
+
+app.get('/scrape/:page', async (req, res) => {
+    const pageToScrape = req.params.page;
+    const url = `https://www.alexanderthomsonsociety.org.uk/?paged=${pageToScrape}&cat=54`;
+
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
+    await page.goto(url);
+    await page.waitForTimeout(5000); 
+
+    const data = await page.evaluate(() => {
+        let newsItems = [];
+        let elements = document.querySelectorAll('.post-item.template-standard');
+
+        for (let element of elements){
+            let titleElement = element.querySelector('.entry-header .post-title a');
+            let summaryElement = element.querySelector('.post-excerpt p');
+            let imageElement = element.querySelector('.post-thumbnail img');
+
+            let title = titleElement ? titleElement.innerText : null;
+            let link = titleElement ? titleElement.href : null;
+            let summary = summaryElement ? summaryElement.innerText : null;
+            let imageUrl = imageElement ? imageElement.dataset.src : null;
+
+            newsItems.push({
+                title: title,
+                link: link,
+                summary: summary,
+                imageUrl: imageUrl
+            });
+        }
+
+        return newsItems;
+    });
+
+    await browser.close();
+
+    if (!data) {
+        res.status(404).json({message: 'No data found'});
+    } else {
+        res.status(200).json(data);
+    }
+});
+
+
+
+
+
 
 // Middleware to parse JSON and URL-encoded data in the request body
 app.use(express.json()); // for parsing application/json
