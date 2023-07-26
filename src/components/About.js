@@ -53,7 +53,6 @@ export default class About extends Component {
       <div id="page" style={{display:"flex", flexDirection:"column", justifyContent:"space-between", height:"100vh"}}>
         {this.state.displayQuestions && <DetailedView data={data} func={this.toggleImage} index={this.state.index}/>}
         <Header resumeData={resumeData}/>
-        <div><h1 style={{color:"black", paddingLeft:"30px"}}>Collection Gallery</h1></div>
         <div className="flexbox gallery">
           <Gallery data={data} func={this.toggleImage}/>
         </div>
