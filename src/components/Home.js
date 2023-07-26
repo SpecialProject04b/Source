@@ -108,7 +108,7 @@ export default class Home extends Component {
             <iframe src="https://app.vectary.com/p/0QIOv3TQQwt0Zd3xry96Z4" style={iframe3Dmodel}></iframe>
           </div>
           <div className="area" >
-            <ul className="circles" style={{marginTop: "0px"}}>
+            <ul className="circles">
                     <li></li>
                     <li></li>
                     <li></li>

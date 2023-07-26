@@ -45,8 +45,7 @@ body {
   grid-template-rows: masonry;
   gap: 30px;
   height: calc(100% - 124px);
-  top: -22px;
-  position: relative;
+  top: -46px;
   overscroll-behavior: "contain";
   overflow-y: scroll;
 }
