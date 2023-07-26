@@ -2,18 +2,23 @@ import React, { useEffect, useState } from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import axios from 'axios';  
+import { Bars } from 'react-loader-spinner';
 
 const NewsLetter = ({ resumeData }) => {
   const [scrapedData, setScrapedData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
 
   const fetchData = (page) => {
+    setIsLoading(true);
     axios.get(`http://localhost:3001/scrape/${page}`) 
       .then(response => {
         setScrapedData(response.data);
+        setIsLoading(false);
       })
       .catch(error => {
         console.log(error);
+        setIsLoading(false);
       });
   };
 
@@ -42,25 +47,29 @@ const NewsLetter = ({ resumeData }) => {
             Alexander Thomson Society
           </a>
         </h1>
-          <div id="portfolio-wrapper" style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around'}}>
-          {
-            scrapedData.map((item, index) => {
-              return (
-                <div key={index} style={{width: '30%', margin: '1%', border: '1px solid #ddd', borderRadius: '5px', padding: '10px'}}>
-                  <a href={item.link}>
-                    <img 
-                      src={item.imageUrl ? item.imageUrl : '/unavailable.jpeg'} 
-                      alt={item.title} 
-                      style={{width: '100%', height: '200px', objectFit: 'cover'}}
-                    />
-                    <h5 style = {{color: '#61dafb'}}> {item.title} </h5>
-                    <p>{item.summary}</p>
-                  </a>
-                </div>
-              )
-            })
+          {isLoading ? 
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh' }}>
+              <Bars type="Bars" color="#00BFFF" height={80} width={80} />
+            </div> 
+          :
+            <div id="portfolio-wrapper" style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around'}}>
+              {scrapedData.map((item, index) => {
+                return (
+                  <div key={index} style={{width: '30%', margin: '1%', border: '1px solid #ddd', borderRadius: '5px', padding: '10px'}}>
+                    <a href={item.link}>
+                      <img 
+                        src={item.imageUrl ? item.imageUrl : '/unavailable.jpeg'} 
+                        alt={item.title} 
+                        style={{width: '100%', height: '200px', objectFit: 'cover'}}
+                      />
+                      <h5 style = {{color: '#61dafb'}}> {item.title} </h5>
+                      <p>{item.summary}</p>
+                    </a>
+                  </div>
+                )
+              })}
+            </div>
           }
-          </div>
           <div style={{textAlign: 'center', marginBottom: '20px'}}>
             <button onClick={prevPage} disabled={currentPage === 1}>
               Previous Page
