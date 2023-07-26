@@ -67,7 +67,7 @@ export default class Home extends Component {
       letterSpacing: '55px',
       fontSize:'64px',
       lineHeight: '2.6',
-      fontWeight:'bold'
+      fontWeight:'bold',
     }
       
     
@@ -121,7 +121,7 @@ export default class Home extends Component {
                     <li></li>
             </ul>
           </div >
-          <div id="page">
+          <div id="page" style={{overflow:'hidden'}}>
             <div><Header resumeData={resumeData}/></div>
             <div style={homepageBox}>
               <h2 style={homepageBoxH2}>
