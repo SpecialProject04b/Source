@@ -74,7 +74,7 @@ export default class About extends Component {
               <FontAwesomeIcon icon={faX} onClick={this.toggleImage} style={{width:"46px", fontSize:"x-large", marginTop:"auto", marginBottom:"auto"}}/>
             </div>  
             <div id="imagebox" style={{display: "flex", flexDirection: "row", height: "calc(100% - 46px)", width: "100%", top: "46px", position: "relative"}}>
-              <TransformWrapper pinch={{step: "150"}} style={{width: "30%", height: "100%"}}>
+              <TransformWrapper pinch={{step: "150"}}>
                 <TransformComponent>
                   <img src={data[this.state.index].src} style={styles} scale={this.state.scale} alt=""></img>
                 </TransformComponent>
