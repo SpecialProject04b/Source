@@ -1,12 +1,21 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faX, faRefresh } from '@fortawesome/free-solid-svg-icons'
-import { TransformWrapper, TransformComponent, resetTransform} from "react-zoom-pan-pinch";
+import { faX } from '@fortawesome/free-solid-svg-icons'
+import { TransformWrapper, TransformComponent} from "react-zoom-pan-pinch";
+import AnnotateView from './AnnotateView';
 
 
 export default class DetailedView extends Component {
 
+    state = {
+        displayAnnotate: false,
+      }
 
+    toggleImage = (i) => {
+        this.setState({
+          displayAnnotate: !this.state.displayAnnotate,
+        });
+      }
     
     handleClick = (event) => {
         const image = event.currentTarget;
@@ -39,8 +48,11 @@ export default class DetailedView extends Component {
           }
         
         return (
+            
             <div id="overlay" style={{zIndex:"999", position:"absolute", top:"0px", left: "0", width: "100%", height:"100vh", backgroundColor:"rgba(0,0,0,0.8)", overflow: "hidden"}}>
+            {this.state.displayAnnotate && <AnnotateView data={data} func={this.toggleImage} index={index}/>}
             <div className="toolbars" style={{zIndex:"998", position: "absolute", width:"100%", backgroundColor:"black", height:"46px", display:"flex", flexDirection:"row", justifyContent:"flex-end"}}>
+              <FontAwesomeIcon icon={faX} onClick={this.toggleImage} style={{width:"46px", fontSize:"x-large", marginTop:"auto", marginBottom:"auto"}}/>
               <FontAwesomeIcon icon={faX} onClick={func} style={{width:"46px", fontSize:"x-large", marginTop:"auto", marginBottom:"auto"}}/>
             </div>  
             <div id="imagebox" style={{display: "flex", flexDirection: "row", height: "calc(100% - 126px)", width: "100%", top: "46px", position: "relative"}}>
