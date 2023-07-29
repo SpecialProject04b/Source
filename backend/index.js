@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const Reactions = require('./reactionSchema.js');
 const cors = require('cors'); 
 const puppeteer = require('puppeteer');
+const Filter = require('bad-words');
 
 const app = express(); 
 const port = process.env.PORT || 3001;
@@ -139,10 +140,13 @@ app.post('/unlike', (req, res) => {
 
 app.post('/comment', (req, res) => {
     const data = req.body; // Extract the data from the request body
-    console.log('Comment is : ', data.comment);
+    var filter = new Filter(),
+    comment = filter.clean(data.comment)
+    
+    console.log('Comment is : ', comment);
     Reactions.findOneAndUpdate(
         { photoId:data.photoId }, // Filter to find the document by ID
-        { $push: { comment: data.comment } }, // Use $push to add the new comment to the "comment" array
+        { $push: { comment } }, // Use $push to add the new comment to the "comment" array
         { new: true } // Set { new: true } to return the updated document in the response
       ).then(foundDocument => {
         console.log("succes " , foundDocument)
