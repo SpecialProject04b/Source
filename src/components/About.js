@@ -1,9 +1,10 @@
 import "./App.css";
-import "./card.scss"
+//import "./card.scss"
+import "./grid.scss"
 import { data } from "./constant/data";
 import Header from './Header';
 import Footer from './Footer';
-import Gallery from "./Gallery";
+import Gallery from "./Gallery2";
 import { Bars } from 'react-loader-spinner';
 import React, { Component } from 'react';
 import DetailedView from "./DetailedView";
@@ -53,9 +54,7 @@ export default class About extends Component {
       <div id="page" style={{display:"flex", flexDirection:"column", justifyContent:"space-between", height:"100vh"}}>
         {this.state.displayQuestions && <DetailedView data={data} func={this.toggleImage} index={this.state.index}/>}
         <Header resumeData={resumeData}/>
-        <div className="flexbox gallery">
           <Gallery data={data} func={this.toggleImage}/>
-        </div>
         <div><Footer resumeData={resumeData}/></div>
       </div>
     );

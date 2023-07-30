@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faX } from '@fortawesome/free-solid-svg-icons'
 import { useState, useRef, useEffect } from 'react';
-
+import "./bubble.css"
 
 export default class AnnotateView extends Component {
     state = {
@@ -73,7 +73,7 @@ export default class AnnotateView extends Component {
                 <div style={{position: "relative"}}>
                     <img src={data[index].src} style={styles} alt=""></img>
                     <div style={{zIndex: 995, height: "100%", transform: "scale(0.8)", display: "block", position: "relative", top: "-100%"}}  onClick={this.handleClick}>
-                        <div style={{color: "red", transform: "translate(0%, -50%)", position: "relative", marginLeft: this.state.x, top: this.state.y}}>===={this.state.text} </div>
+                        <p class="bubble thought" style={{transform: "translate(-5%, -128%)", position: "relative", marginLeft: this.state.x, top: this.state.y}}>{this.state.text}</p>
                     </div>
                     
                 </div>

@@ -1,0 +1,97 @@
+
+p.bubble {
+	position: relative;
+	width: 300px;
+	text-align: center;
+	line-height: 1.4em;
+	margin: 40px auto;
+	background-color: #fff;
+	border: 8px solid #333;
+	border-radius: 30px;
+	font-family: sans-serif;
+	padding: 20px;
+	font-size: large;
+}
+
+p.thought {
+	width: 300px;
+	border-radius: 200px;
+	padding: 30px;	
+}
+
+p.bubble:before,
+p.bubble:after {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+}
+
+p.speech:before {
+	left: 30px;
+	bottom: -50px;
+	border: 25px solid;
+	border-color: #333 transparent transparent #333;
+}
+
+p.speech:after {
+	left: 38px;
+	bottom: -30px;
+	border: 15px solid;
+	border-color: #fff transparent transparent #fff;
+}
+
+p.thought:before,
+p.thought:after {
+	left: 10px;
+	bottom: -30px;
+	width: 40px;
+	height: 40px;
+	background-color: #fff;
+	border: 8px solid #333;
+	-webkit-border-radius: 28px;
+	-moz-border-radius: 28px;
+	border-radius: 28px;
+}
+
+p.thought:after {
+	width: 20px;
+	height: 20px;
+	left: 5px;
+	bottom: -40px;
+	-webkit-border-radius: 18px;
+	-moz-border-radius: 18px;
+	border-radius: 18px;
+}
+
+.dot {
+    height: 25px;
+    width: 25px;
+    background-color: red;
+    border-radius: 50%;
+    display: inline-block;
+    transform: translate(-50%, -50%);
+  }
+
+#imagebox > div > div > div > div > div > svg {
+    fill: red;
+    :hover {
+        fill: blue;
+        .tooltip {
+            visibility: visible;
+        }
+    }
+}
+
+.point:hover .tooltip {
+    visibility: visible;
+}
+
+.tooltip {
+    position: absolute;
+    visibility: hidden;
+    top: -5px;
+    left: 105%;
+    min-width: 500px;
+}
+

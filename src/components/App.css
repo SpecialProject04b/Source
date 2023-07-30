@@ -27,12 +27,15 @@ body {
 
 .react-transform-wrapper {
   height: 100% !important;
-  width: 70% !important;
+  width: 100% ;
+  margin: auto !important;
+  position: relative;
 }
 
 .react-transform-component {
+  position: relative;
   height: 100% !important;
-  width: 100% !important;
+  width: 100%;
 }
 
 .gallery {
