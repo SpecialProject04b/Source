@@ -9,17 +9,10 @@ var schema = new Schema({// the text here are use to target specific collection 
     photoId:{
         type: String,
         required : true,
-        unique: true
+        unique: true,
     },
-    like:{
-        type: Number,
-        required : true
-    },
-    comment : {
-        type: [String],
-        required : true
-    }
-    
+    like: {type: Number, required: true},
+    comment : [{ top: String, left: String, text: String }]
 });
 
 module.exports = mongoose.model('Reaction', schema);

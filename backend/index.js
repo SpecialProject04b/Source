@@ -80,9 +80,28 @@ db.once('open' ,()=>{
 
 app.get('/resetDatabase', (req, res) => {
     var newReaction  = new Reactions({
-        photoId: '123456',
+        photoId: '/Images/898034.1.jpg',
         like: 10,
-        comment: ['Great photo!', 'Amazing!', 'Beautiful shot']
+        comment: [{
+          top: "25%",
+          left: "25%",
+          text: "top left"
+        },
+        {
+          top: "75%",
+          left: "25%",
+          text: "bottom left"
+        },
+        {
+          top: "75%",
+          left: "75%",
+          text: "bottom right"
+        },
+        {
+          top: "25%",
+          left: "75%",
+          text: "top right"
+        }]
       })
 
     var data = newReaction.save();
