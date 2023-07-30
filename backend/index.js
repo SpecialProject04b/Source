@@ -112,8 +112,16 @@ app.get('/resetDatabase', (req, res) => {
     });
 });
 
+app.get('/getComment', async (req,res) => {
+  const name =  req.query.name;
+  const query = {"photoId": name}
+  var data = await Reactions.findOne(query, "comment");
+  if (data) {
+    res.json(data.comment)
+  }
+});
+
 app.get('/allFeedback', async (req, res) => {
-    var data = await Reactions.find();
     console.log(data)
     res.json({
         message: "Worked" ,
