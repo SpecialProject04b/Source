@@ -9,6 +9,7 @@ import { Bars } from 'react-loader-spinner';
 import React, { Component } from 'react';
 import DetailedView from "./DetailedView";
 
+
 const loadImage = src => {
   return new Promise((resolve, reject) => {
     const img = new Image();
