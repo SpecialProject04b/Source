@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Header from './Header';
-import animation from '../animationInverse.css'
+import animation from '../animation.css'
 
 export default class ContactUs extends Component {
   render() {

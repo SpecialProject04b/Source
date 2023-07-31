@@ -37,7 +37,7 @@ export default class Home extends Component {
     };
 
     const homepageBoxH2 = {
-      marginTop:'50px',
+      
       fontSize:'24px',
       marginLeft:'20px',
       lineHeight:'1.5',
@@ -107,7 +107,7 @@ export default class Home extends Component {
           <div style={iframeStyle}>
             <iframe src="https://app.vectary.com/p/0QIOv3TQQwt0Zd3xry96Z4" style={iframe3Dmodel}></iframe>
           </div>
-          <div className="area" >
+          <div className="area" style={{backgroundColor:'#000000'}}>
             <ul className="circles">
                     <li></li>
                     <li></li>
