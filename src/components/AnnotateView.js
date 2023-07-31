@@ -8,8 +8,8 @@ import axios from 'axios';
 
 export default class AnnotateView extends Component {
     state = {
-        x: "",
-        y: "",
+        x: "50%",
+        y: "50%",
         text: "",
       }
 
@@ -104,19 +104,19 @@ export default class AnnotateView extends Component {
         
         return (
             
-            <div id="overlay" style={{zIndex:"999", position:"absolute", top:"0px", left: "0", width: "100%", height:"100vh", backgroundColor:"rgba(255,0,0,1)", overflow: "hidden"}}>
+            <div id="overlay" style={{zIndex:"999", position:"absolute", top:"0px", left: "0", width: "70%", height:"100vh", backgroundColor:"rgba(0,0,0,0.9)", overflow: "hidden"}}>
             <div className="toolbars" style={{zIndex:"998", position: "absolute", width:"100%", backgroundColor:"black", height:"46px", display:"flex", flexDirection:"row", justifyContent:"flex-end"}}>
               <FontAwesomeIcon icon={faX} onClick={func} style={{width:"46px", fontSize:"x-large", marginTop:"auto", marginBottom:"auto"}}/>
             </div>  
-            <div id="imagebox" style={{display: "flex", flexDirection: "row", height: "calc(100% - 126px)", width: "100%", top: "46px", position: "relative"}}>
+            <div id="imagebox" style={{display: "flex", flexDirection: "row", height: "calc(100% - 46px)", width: "100%", top: "46px", position: "relative"}}>
                 <div style={{position: "relative"}}>
                     <img src={data[index].src} style={styles} alt=""></img>
                     <div style={{zIndex: 995, height: "100%", transform: "scale(0.8)", display: "block", position: "relative", top: "-100%"}}  onClick={this.handleClick}>
                         <div class="pointerPos" onClick={this.handleInputClick}style={{position: "absolute", top: this.state.y, left: this.state.x, transformOrigin: "left"}}>
-                          <Pin style={{ width: "20px", height: "20px", transform: "translate(-50%, -50%)"}}>{this.state.text}</Pin>
+                          <Pin style={{fill:"blue", width: "20px", height: "20px", transform: "translate(-50%, -50%)"}}>{this.state.text}</Pin>
                           <div style={{minWidth:"3000px", top: "-22px",  left: "105%", float:"left",  position: "absolute"}}>
                             <span>
-                              <input style={{float:"left", height: "50px", borderRadius: "5px 0px 0px 5px"}}type="text" value={this.inputValue} onChange={this.handleInputChange} placeholder='Type Comment Here...'/>
+                              <input style={{float:"left", height: "50px", borderRadius: "5px 0px 0px 5px"}}type="text" value={this.inputValue} onChange={this.handleInputChange} placeholder='Click anywhere...'/>
                               <button style={{float:"left", height: "50px", borderRadius: "0px 5px 5px 0px"}} onClick={(e)=>this.handleSubmit(e, data[index].src)}>Submit</button>
                             </span>
                           </div>
