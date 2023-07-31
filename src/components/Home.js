@@ -37,11 +37,12 @@ export default class Home extends Component {
     };
 
     const homepageBoxH2 = {
-      
+      marginTop:'20px',
       fontSize:'24px',
       marginLeft:'20px',
       lineHeight:'1.5',
-      width:'300px'
+      width:'300px',
+      color:'white'
     };
 
     const homepageBoxP = {
@@ -144,7 +145,7 @@ export default class Home extends Component {
             
           </p>
 
-          <p style={bannerTextName} className='textHover'>
+          <p style={bannerTextName}>
             ALEXANDER THOMSON
           </p>
           
