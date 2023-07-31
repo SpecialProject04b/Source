@@ -143,7 +143,7 @@ header .scrolldown a:hover { color: #11ABB0; }
    position: fixed;
    left: 0;
    top: 0;
-   /* background-color: #000000; */
+   background-color: #ffffffca;
    
 }
 /* .opaque { background-color: #333; } */
@@ -421,7 +421,9 @@ ul#nav li.current a { color: #11ABB0; }
    background: #ebeeee;
    padding-top: 90px;
    padding-bottom: 60px;
+   
 }
+
 #portfolio h1 {
    font: 15px/24px 'opensans-semibold', sans-serif;
    text-transform: uppercase;

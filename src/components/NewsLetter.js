@@ -37,16 +37,16 @@ const NewsLetter = ({ resumeData }) => {
   };
 
   return (
-    <div id="page" style={{display:"flex", flexDirection:"column", justifyContent:"space-between", height:"100vh"}}>
+    <div id="resume" style={{overflow:"auto",display:"flex", flexDirection:"column", justifyContent:"space-between", height:"100vh"}}>
       <Header resumeData={resumeData}/>
       <div className="row">
         <div className="twelve columns collapsed">
-        <h1 style={{marginTop: '50px', color: '#61dafb', textAlign: 'center'}}>
-          News Directly from{' '}
+        <h3 style={{textAlign:"center"}}>
+          News Direct from{' '}
           <a href="https://www.alexanderthomsonsociety.org.uk/?cat=54" target="_blank" rel="noopener noreferrer">
             Alexander Thomson Society
           </a>
-        </h1>
+        </h3>
           {isLoading ? 
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh' }}>
               <Bars type="Bars" color="#00BFFF" height={80} width={80} />
@@ -62,7 +62,7 @@ const NewsLetter = ({ resumeData }) => {
                         alt={item.title} 
                         style={{width: '100%', height: '200px', objectFit: 'cover'}}
                       />
-                      <h5 style = {{color: '#61dafb'}}> {item.title} </h5>
+                      <h1 style = {{color: '#61dafb'}}> {item.title} </h1>
                       <p>{item.summary}</p>
                     </a>
                   </div>
@@ -71,10 +71,10 @@ const NewsLetter = ({ resumeData }) => {
             </div>
           }
           <div style={{textAlign: 'center', marginBottom: '20px'}}>
-            <button onClick={prevPage} disabled={currentPage === 1}>
+            <button onClick={prevPage} disabled={currentPage === 1} style={{float:'left',marginLeft:'20px'}}>
               Previous Page
             </button>
-            <button onClick={nextPage}>
+            <button onClick={nextPage} style={{float:'right',marginRight:'20px'}}>
               Next Page
             </button>
           </div>
