@@ -833,6 +833,10 @@ call-to-action .button {
    height: 100%;
    font-family: "Inconsolata", monospace;
 }
+
+#contact #nav-wrap{
+   background-color: #000000ca
+}
 #contact .section-head { margin-bottom: 42px; }
 
 #contact a, #contact a:visited  { color: #000000; }

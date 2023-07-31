@@ -388,8 +388,6 @@ export default  class Resume extends Component {
             <li>
               <div>
                 <time>His pupil (William?) Clunas later recorded that</time> 
-                In mattis elit vitae odio posuere, nec maximus massa varius. 
-                Suspendisse varius volutpat mattis. Vestibulum id magna est.
               </div>
             </li>
             <li>
@@ -406,7 +404,7 @@ export default  class Resume extends Component {
             </li>
             <li>
               <div>
-                <time>2005</time> 
+                
                 Despite this, his estate was valued for Scottish inventory duty at £15,395 5s. 3d. He was buried in the 
                 Southern Necropolis in Glasgow; the plot is now unmarked. Of the twelve children he had with Jane 
                 Nicholson, seven survived infancy.
