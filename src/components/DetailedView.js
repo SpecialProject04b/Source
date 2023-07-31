@@ -72,8 +72,9 @@ export default class DetailedView extends Component {
                     <img src={data[index].src} style={styles} alt=""/>
                      {this.state.viewComment && this.state.testAnnotate.map((item, index) => (
                         <div class="point" style={{position: "absolute", transform: "translate(-50%, -50%)", top: item.top, left: item.left}}>
-                          <KeepScale><Pin fill="red" style={{ width: "20px", height: "20px" }}></Pin></KeepScale>
+                          <KeepScale><Pin fill="red" style={{ width: "20px", height: "20px" }}></Pin>
                           <span class="tooltip">{item.text}</span>
+                          </KeepScale>
                         </div>
                      ))}
                   </div>

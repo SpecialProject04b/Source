@@ -79,37 +79,110 @@ db.once('open' ,()=>{
 
 
 app.get('/resetDatabase', (req, res) => {
-    var newReaction  = new Reactions({
+    var newReaction  = [
+      {
         photoId: '/Images/898034.1.jpg',
-        like: 10,
-        comment: [{
-          top: "25%",
-          left: "25%",
-          text: "top left"
-        },
-        {
-          top: "75%",
-          left: "25%",
-          text: "bottom left"
-        },
-        {
-          top: "75%",
-          left: "75%",
-          text: "bottom right"
-        },
-        {
-          top: "25%",
-          left: "75%",
-          text: "top right"
-        }]
-      })
+        like: 0,
+        comment: []
+      },
+            {
+        photoId: '/Images/898034.2.jpg',
+        like: 0,
+        comment: []
+      },
+      {
+        photoId: '/Images/898034.3.jpg',
+        like: 0,
+        comment: []
+      },
+      {
+        photoId: '/Images/898034.4.jpg',
+        like: 0,
+        comment: []
+      },
+      {
+        photoId: '/Images/898034.5.jpg',
+        like: 0,
+        comment: []
+      },
+      {
+        photoId: '/Images/898034.10.jpg',
+        like: 0,
+        comment: []
+      },
+      {
+        photoId: '/Images/898034.17.jpg',
+        like: 0,
+        comment: []
+      },
+      {
+        photoId: '/Images/898034.19.jpg',
+        like: 0,
+        comment: []
+      },
+      {
+        photoId: '/Images/898034.22.jpg',
+        like: 0,
+        comment: []
+      },
+      {
+        photoId: '/Images/898034.23.jpg',
+        like: 0,
+        comment: []
+      },
+      {
+        photoId: '/Images/898034.24.jpg',
+        like: 0,
+        comment: []
+      },
+      {
+        photoId: '/Images/898034.27.jpg',
+        like: 0,
+        comment: []
+      },
+      {
+        photoId: '/Images/898034.28.ii.jpg',
+        like: 0,
+        comment: []
+      },
+      {
+        photoId: '/Images/898034.28.ix.jpg',
+        like: 0,
+        comment: []
+      },
+      {
+        photoId: '/Images/898034.28.v.jpg',
+        like: 0,
+        comment: []
+      },
+      {
+        photoId: '/Images/898034.28.vi.jpg',
+        like: 0,
+        comment: []
+      },
+      {
+        photoId: '/Images/898034.28.vii.jpg',
+        like: 0,
+        comment: []
+      },
+    ]
 
-    var data = newReaction.save();
+    Reactions.create(newReaction)
+      .then(savedReactions => {
+        console.log('Saved reactions:', savedReactions);
+        // Do something after successfully saving the users.
+        res.json({
+          message: "Worked",
+      });
+      })
+      .catch(error => {
+        console.error('Error saving reactions:', error);
+        res.json({
+          error
+      });
+      });
     
-    res.json({
-        message: "Worked",
-        data
-    });
+
 });
 
 app.get('/getComment', async (req,res) => {
@@ -165,10 +238,13 @@ app.post('/unlike', (req, res) => {
     });
 });
 
+
 app.post('/comment', (req, res) => {
     const data = req.body; // Extract the data from the request body
     var filter = new Filter(),
-    comment = filter.clean(data.comment)
+    commentText = filter.clean(data.comment.text)
+
+    comment = {"top": data.comment.top, "left": data.comment.left, "text": commentText}
     
     console.log('Comment is : ', comment);
     Reactions.findOneAndUpdate(

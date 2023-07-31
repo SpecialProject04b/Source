@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faX } from '@fortawesome/free-solid-svg-icons'
 import { useState, useRef, useEffect } from 'react';
-import "./bubble.css"
+import "./bubble.css";
+import { ReactComponent as Pin } from "react-zoom-pan-pinch/src/stories/assets/pin.svg";
+import axios from 'axios';  
 
 export default class AnnotateView extends Component {
     state = {
@@ -45,7 +47,44 @@ export default class AnnotateView extends Component {
         console.log(this.state.text)
         };
     
+    handleInputClick = (event) => {
+      event.stopPropagation()
+      console.log("box")
+    }
 
+    handleSubmit = (event, id) => {
+      event.stopPropagation()
+
+      if(this.state.text === ""){
+        alert("Please input comments")
+      } else {
+        const apiUrl = 'http://localhost:3001/comment'; // Replace with your actual API URL.
+        const params = {
+          photoId: id,
+          comment: {
+            top: this.state.y,
+            left: this.state.x,
+            text: this.state.text
+          }
+          };
+
+        console.log(params)
+
+        // Make the POST request using Axios.
+        axios.post(apiUrl, params)
+        .then(response => {
+          // Request was successful, handle the response data here.
+          console.log('Response:', response.data);
+          alert("Comment Successfully Added")
+        })
+        .catch(error => {
+          // Request failed, handle the error here.
+          console.error('Error:', error);
+          alert("Unsuccessful Request")
+        });
+
+      }
+    }
 
     render() {
         let data = this.props.data;
@@ -73,23 +112,17 @@ export default class AnnotateView extends Component {
                 <div style={{position: "relative"}}>
                     <img src={data[index].src} style={styles} alt=""></img>
                     <div style={{zIndex: 995, height: "100%", transform: "scale(0.8)", display: "block", position: "relative", top: "-100%"}}  onClick={this.handleClick}>
-                        <p class="bubble thought" style={{transform: "translate(-5%, -128%)", position: "relative", marginLeft: this.state.x, top: this.state.y}}>{this.state.text}</p>
+                        <div class="pointerPos" onClick={this.handleInputClick}style={{position: "absolute", top: this.state.y, left: this.state.x, transformOrigin: "left"}}>
+                          <Pin style={{ width: "20px", height: "20px", transform: "translate(-50%, -50%)"}}>{this.state.text}</Pin>
+                          <div style={{minWidth:"3000px", top: "-22px",  left: "105%", float:"left",  position: "absolute"}}>
+                            <span>
+                              <input style={{float:"left", height: "50px", borderRadius: "5px 0px 0px 5px"}}type="text" value={this.inputValue} onChange={this.handleInputChange} placeholder='Type Comment Here...'/>
+                              <button style={{float:"left", height: "50px", borderRadius: "0px 5px 5px 0px"}} onClick={(e)=>this.handleSubmit(e, data[index].src)}>Submit</button>
+                            </span>
+                          </div>
+                        </div>
                     </div>
-                    
                 </div>
-              <div id="info" style={{width: "30%", background:"azure", zIndex:"997"}}>
-                <div>{this.state.x}</div>
-                <div>{this.state.y}</div>
-                <div>{this.state.text}</div>
-                
-                <input
-                    type="text"
-                    value={this.inputValue}
-                    onChange={this.handleInputChange}
-                    placeholder="Type something..."
-                />
-                <button onClick={this.submit}>Submit</button>
-              </div>
             </div>
           </div>
         )
