@@ -56,7 +56,6 @@ export default class About extends Component {
         {this.state.displayQuestions && <DetailedView data={data} func={this.toggleImage} index={this.state.index}/>}
         <Header resumeData={resumeData}/>
           <Gallery data={data} func={this.toggleImage}/>
-        <div><Footer resumeData={resumeData}/></div>
       </div>
     );
   }

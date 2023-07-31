@@ -5,6 +5,7 @@ import { TransformWrapper, TransformComponent, KeepScale  } from "react-zoom-pan
 import AnnotateView from './AnnotateView';
 import { ReactComponent as Pin } from "react-zoom-pan-pinch/src/stories/assets/pin.svg";
 import axios from 'axios';  
+import InfoPanel from './InfoPanel';
 
 
 export default class DetailedView extends Component {
@@ -60,27 +61,34 @@ export default class DetailedView extends Component {
         return (
             <div id="overlay" style={{zIndex:"999", position:"absolute", top:"0px", left: "0", width: "100%", height:"100vh", backgroundColor:"rgba(0,0,0,0.8)", overflow: "hidden"}}>
             {this.state.displayAnnotate && <AnnotateView data={data} func={this.toggleImage} index={index}/>}
-            <div className="toolbars" style={{zIndex:"998", position: "absolute", width:"100%", backgroundColor:"black", height:"46px", display:"flex", flexDirection:"row", justifyContent:"flex-end"}}>
-              <FontAwesomeIcon icon={faX} onClick={()=>this.toggleViewAnnotate(data[index].src)} style={{width:"46px", fontSize:"x-large", marginTop:"auto", marginBottom:"auto"}}/>
-              <FontAwesomeIcon icon={faX} onClick={this.toggleImage} style={{width:"46px", fontSize:"x-large", marginTop:"auto", marginBottom:"auto"}}/>
-              <FontAwesomeIcon icon={faX} onClick={func} style={{width:"46px", fontSize:"x-large", marginTop:"auto", marginBottom:"auto"}}/>
-            </div>  
-            <div id="imagebox" style={{height: "calc(100% - 126px)", width: "100%", top: "46px", position: "relative"}}>
-              <TransformWrapper maxScale={100}>
-                <TransformComponent>
-                  <div style={{position: "relative", height:"100%"}}>
-                    <img src={data[index].src} style={styles} alt=""/>
-                     {this.state.viewComment && this.state.testAnnotate.map((item, index) => (
-                        <div class="point" style={{position: "absolute", transform: "translate(-50%, -50%)", top: item.top, left: item.left}}>
-                          <KeepScale><Pin fill="red" style={{ width: "20px", height: "20px" }}></Pin>
-                          <span class="tooltip">{item.text}</span>
-                          </KeepScale>
-                        </div>
-                     ))}
-                  </div>
-                </TransformComponent>
-              </TransformWrapper>
+            <div style={{display:"grid", gridTemplateColumns: "7fr 3fr"}}>
+            <div>
+              <div className="toolbars" style={{zIndex:"998", position: "absolute", width:"70%", backgroundColor:"black", height:"46px", display:"flex", flexDirection:"row", justifyContent:"flex-end"}}>
+                <FontAwesomeIcon icon={faX} onClick={()=>this.toggleViewAnnotate(data[index].src)} style={{width:"46px", fontSize:"x-large", marginTop:"auto", marginBottom:"auto"}}/>
+                <FontAwesomeIcon icon={faX} onClick={this.toggleImage} style={{width:"46px", fontSize:"x-large", marginTop:"auto", marginBottom:"auto"}}/>
+                <FontAwesomeIcon icon={faX} onClick={func} style={{width:"46px", fontSize:"x-large", marginTop:"auto", marginBottom:"auto"}}/>
+              </div>  
+              <div id="imagebox" style={{height: "calc(100% - 46px)", width: "100%", top: "46px", position: "relative"}}>
+                <TransformWrapper maxScale={100} limitToBounds={false}>
+                  <TransformComponent>
+                    <div style={{position: "relative", height:"100%"}}>
+                      <img src={data[index].src} style={styles} alt=""/>
+                      {this.state.viewComment && this.state.testAnnotate.map((item, index) => (
+                          <div class="point" style={{position: "absolute", transform: "translate(-50%, -50%)", top: item.top, left: item.left}}>
+                            <KeepScale><Pin fill="red" style={{ width: "20px", height: "20px" }}></Pin>
+                            <span class="tooltip">{item.text}</span>
+                            </KeepScale>
+                          </div>
+                      ))}
+                    </div>
+                  </TransformComponent>
+                </TransformWrapper>
+              </div>
             </div>
+            <InfoPanel title={data[index].a} technique={data[index].b} date={data[index].c} map={data[index].d} desc={data[index].e}/>
+            </div>
+            
+            
           </div>
         )
     }
