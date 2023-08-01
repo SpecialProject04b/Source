@@ -17,6 +17,7 @@ export default class Gallery extends Component {
                     </div>
                     ))}
             </section>
+           
         )
     }
 

@@ -50,7 +50,7 @@ body {
   height: calc(100% - 124px);
   top: -46px;
   overscroll-behavior: "contain";
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
 }
 
 /* @media (min-width: 576px) {

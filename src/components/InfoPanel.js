@@ -14,9 +14,9 @@ export default class InfoPanel extends Component {
                     <b style={{textAlign: "center"}}>{title}</b>
                     <hr/>
                     <b>Date</b>
-                    <p>{date}</p>
+                    <p style={{marginBottom:'2px'}}>{date}</p>
                     <b>Technique Used</b>
-                    <p>{technique}</p>
+                    <p style={{marginBottom:'2px'}}>{technique}</p>
                     <hr/>
                     <b>History</b>
                     <p style={{textAlign: "justify"}}>{desc}</p>
