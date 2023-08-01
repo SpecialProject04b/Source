@@ -200,19 +200,22 @@ app.get('/allFeedback', async (req, res) => {
 
 app.post('/like', (req, res) => {
     Reactions.findOneAndUpdate(
-        { photoId: req.body.photoId }, // Filter to find the document by ID
-        { $inc: { like: 1 } }, // Use $push to add the new comment to the "comment" array
-        { new: true } // Set { new: true } to return the updated document in the response
-      ).then(foundDocument => {
-        console.log("succes " , foundDocument)
-      })
-      .catch(err => {
-        console.error('Error finding or updating document:', err);
-      }); 
-
-    res.json({
-        message: "Liked ."
-    });
+      { photoId: req.body.photoId }, // Filter to find the document by ID
+      { $inc: { like: 1 } }, // Use $push to add the new comment to the "comment" array
+      { new: true } // Set { new: true } to return the updated document in the response
+    ).then(foundDocument => {
+      console.log("succes " , foundDocument)
+      res.json({
+        message: "Liked .",
+        foundDocument
+      });
+    })
+    .catch(err => {
+      console.error('Error finding or updating document:', err);
+      res.json({
+        message: "Failed."
+      });
+    }); 
 });
 
 app.post('/unlike', (req, res) => {
