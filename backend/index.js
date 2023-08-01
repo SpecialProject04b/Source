@@ -9,7 +9,7 @@ const Filter = require('bad-words');
 const app = express(); 
 const port = process.env.PORT || 3001;
 
-app.use(cors('*'));
+app.use(cors("*"));
 
 app.get('/scrape/:page', async (req, res) => {
     const pageToScrape = req.params.page;
@@ -17,8 +17,8 @@ app.get('/scrape/:page', async (req, res) => {
 
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
+    await page.setDefaultNavigationTimeout(60000);
     await page.goto(url);
-    await page.waitForTimeout(5000); 
 
     const data = await page.evaluate(() => {
         let newsItems = [];
