@@ -56,6 +56,6 @@
     "puppeteer": "^20.9.0"
   },
   "engines": {
-    "node": "16.x"
+    "node": "18.x"
   }
 }
