@@ -66,7 +66,7 @@ app.use(express.urlencoded({ extended: true })); // for parsing application/x-ww
 
 // app.use(express.static(path.join(__dirname, './build')));
 
-mongoose.connect("mongodb+srv://specialproject:specialproject123@cluster0.v0joqli.mongodb.net/", { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect("mongodb+srv://specialproject:specialproject123@cluster0.v0joqli.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 db.on('error' ,err=>{ console.log(err)});
 db.once('open' ,()=>{ 
@@ -191,10 +191,9 @@ app.get('/getComment', async (req,res) => {
 });
 
 app.get('/allFeedback', async (req, res) => {
-    console.log(data)
+
     res.json({
-        message: "Worked" ,
-        data
+        message: "Worked" 
     });
     // res.send('Hello, this is a GET request!');
 });
