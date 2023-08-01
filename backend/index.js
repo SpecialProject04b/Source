@@ -9,7 +9,7 @@ const Filter = require('bad-words');
 const app = express(); 
 const port = process.env.PORT || 3001;
 
-app.use(cors());
+app.use(cors('*'));
 
 app.get('/scrape/:page', async (req, res) => {
     const pageToScrape = req.params.page;
