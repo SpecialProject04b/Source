@@ -256,13 +256,18 @@ app.post('/comment', (req, res) => {
         { new: true } // Set { new: true } to return the updated document in the response
       ).then(foundDocument => {
         console.log("succes " , foundDocument)
+        res.json({
+          message: "Comment Succesfully.",
+          foundDocument
+        });
       })
       .catch(err => {
         console.error('Error finding or updating document:', err);
+        res.json({
+          message: "Failed."
+        });
       }); 
-    res.json({
-        message: "Commented ."
-    });
+    
 });
 
 
