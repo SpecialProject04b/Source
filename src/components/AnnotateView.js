@@ -14,7 +14,7 @@ export default class AnnotateView extends Component {
       }
 
     submit = () => {
-        //POST REQUEST localhost:3001/comment
+        //POST REQUEST https://4b-alexander-thomson-backend.vercel.app/comment
     }
 
 
@@ -58,7 +58,7 @@ export default class AnnotateView extends Component {
       if(this.state.text === ""){
         alert("Please input comments")
       } else {
-        const apiUrl = 'http://localhost:3001/comment'; // Replace with your actual API URL.
+        const apiUrl = 'https://4b-alexander-thomson-backend.vercel.app/comment'; // Replace with your actual API URL.
         const params = {
           photoId: id,
           comment: {

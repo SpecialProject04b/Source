@@ -11,7 +11,7 @@ const NewsLetter = ({ resumeData }) => {
 
   const fetchData = (page) => {
     setIsLoading(true);
-    axios.get(`http://localhost:3001/scrape/${page}`) 
+    axios.get(`https://4b-alexander-thomson-backend.vercel.app/scrape/${page}`) 
       .then(response => {
         setScrapedData(response.data);
         setIsLoading(false);
