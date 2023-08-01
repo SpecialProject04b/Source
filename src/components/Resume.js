@@ -225,9 +225,9 @@ export default  class Resume extends Component {
           </div>
         </div>
 
-        <img src="/Images/alex.jpg"/>
-        <div class="main">
-            <h1>Thomson, Alexander [Greek]<br/><span>(1817–1875)</span></h1>
+        <img class="resume-image" src="/Images/alex.jpg"/>
+        <div class="main" >
+            <h1 class='resume-h1'>Thomson, Alexander [Greek]<br/><span>(1817–1875)</span></h1>
             <p id="resumePara1">
                 Thomson, Alexander [called Greek Thomson] (1817–1875), architect, was born on 9 April 1817 at Endrick 
                 Cottage, Balfron, Stirlingshire, the seventeenth of the twenty children of John Thomson (1757/8–1824), 

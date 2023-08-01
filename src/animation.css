@@ -183,7 +183,7 @@
        1px -1px 0 black,
       -1px 1px 0 black,
        1px 1px 0 black;
-    z-index: 102;
+    z-index: 3;
   }
   
   .content__container {

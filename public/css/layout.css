@@ -252,18 +252,6 @@ ul#nav li.current a { color: #11ABB0; }
 #resume a, #resume a:visited  { color: #000000; }
 #resume a:hover, #resume a:focus { color: #313131; }
 
-#resume h1 {
-   position: absolute;
-   top: 30%;
-   right:5%;
-   text-transform: uppercase;
-   letter-spacing: 1px;
-   z-index: 302;
-   background-color: rgba(255, 255, 255, 0.082);
-   text-align: right;
-   
-
-}
 #resume h1 span {
    border-bottom: 3px solid #11ABB0;
    padding-bottom: 6px;
@@ -293,15 +281,6 @@ ul#nav li.current a { color: #11ABB0; }
 #resume .date {
    font: 15px/24px 'opensans-regular', sans-serif;
    margin-top: 6px;
-}
-
-#resume img {
-   z-index: 101;
-   position: absolute;
-   top: 50%;
-   left: 25%;
-   transform: translate(-50%, -50%);
-   width: 30%;
 }
 
 #resumePara1{
