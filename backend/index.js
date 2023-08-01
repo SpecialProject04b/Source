@@ -222,7 +222,7 @@ app.post('/like', (req, res) => {
 
 app.post('/unlike', (req, res) => {
     Reactions.findOneAndUpdate(
-        { photoId: req.body.id }, // Filter to find the document by ID
+        { photoId: req.body.photoId }, // Filter to find the document by ID
         { $inc: { like: -1 } }, // Use $push to add the new comment to the "comment" array
         { new: true } // Set { new: true } to return the updated document in the response
       ).then(foundDocument => {
