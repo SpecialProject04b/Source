@@ -55,10 +55,6 @@ app.get('/scrape/:page', async (req, res) => {
 });
 
 
-
-
-
-
 // Middleware to parse JSON and URL-encoded data in the request body
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
@@ -68,7 +64,7 @@ app.use(express.urlencoded({ extended: true })); // for parsing application/x-ww
 // next(); // Call next() to pass control to the next middleware in the chain
 // });
 
-// app.use(express.static(path.join(__dirname, '../build')));
+// app.use(express.static(path.join(__dirname, './build')));
 
 mongoose.connect("mongodb+srv://specialproject:specialproject123@cluster0.v0joqli.mongodb.net/", { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
