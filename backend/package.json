@@ -16,7 +16,7 @@
     "util": "^0.12.5"
   },
   "scripts": {
-    "start": "npm start"
+    "start": "node index.js"
   },
   "engines": {
     "node": "18.x"
