@@ -169,16 +169,14 @@ app.get('/resetDatabase', (req, res) => {
         // Do something after successfully saving the users.
         res.json({
           message: "Worked",
-      });
+        });
       })
       .catch(error => {
         console.error('Error saving reactions:', error);
         res.json({
           error
+        });
       });
-      });
-    
-
 });
 
 app.get('/getComment', async (req,res) => {
@@ -187,6 +185,10 @@ app.get('/getComment', async (req,res) => {
   var data = await Reactions.findOne(query, "comment");
   if (data) {
     res.json(data.comment)
+  }else{
+    res.json({
+      message: "Failed" 
+    })
   }
 });
 
@@ -219,21 +221,24 @@ app.post('/like', (req, res) => {
 });
 
 app.post('/unlike', (req, res) => {
-    console.log('Liked this photo :', req.body.id);
     Reactions.findOneAndUpdate(
         { photoId: req.body.id }, // Filter to find the document by ID
         { $inc: { like: -1 } }, // Use $push to add the new comment to the "comment" array
         { new: true } // Set { new: true } to return the updated document in the response
       ).then(foundDocument => {
-        console.log("succes " , foundDocument)
+        res.json({
+          message: "Unliked Succesfully.",
+          foundDocument
+        });
       })
       .catch(err => {
         console.error('Error finding or updating document:', err);
+        res.json({
+          message: "Failed."
+        });
       }); 
 
-    res.json({
-        message: "Liked ."
-    });
+    
 });
 
 
