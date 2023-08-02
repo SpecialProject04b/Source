@@ -37,24 +37,22 @@ export default class Home extends Component {
     };
 
     const homepageBoxH2 = {
-      marginTop:'20px',
+      // marginTop:'20px',
       fontSize:'24px',
-      marginLeft:'20px',
+      margin:'20px 16px 16px  16px',
       lineHeight:'1.5',
-      width:'300px',
+      
       color:'white'
     };
 
     const homepageBoxP = {
       fontSize:'16px',
-      marginLeft:'20px', 
-      lineHeight:'1.6',
-      width:'300px'
+      margin:'16px', 
+      lineHeight:'1.6'
     };
 
     const homepageBoxButton = {
-      marginLeft:'20px',
-      width:'80%'
+      width:'100%'
     };
 
 
@@ -126,16 +124,18 @@ export default class Home extends Component {
             <div><Header resumeData={resumeData}/></div>
             <div style={homepageBox}>
               <h2 style={homepageBoxH2}>
-                Welcome to 
-                Mitchell library's collection
+                Welcome to Mitchell library's collection
               </h2>
               <p style={homepageBoxP}>
                 Find out more about Alexander "Greek" Thomson's works 
                 and his contribution to glasgow.
               </p>
+              <p style={homepageBoxP}>
               <button style={homepageBoxButton}>
                 Find Out More
               </button>
+              </p>
+              
           </div>
           <p style={bannerText}>
             VISIONARY
