@@ -83,11 +83,10 @@ export default class Gallery extends Component {
         let func = this.props.func;
         const { isChecking,data } = this.state;
         return (
-            
-            <div >
+            <div id='portfolio'>
                 {console.log(isChecking)}
                 {isChecking ? (<div></div>) : (
-                    <section id="portfolio">
+                    <>
                         {data.map((item, index) => (
                         <div class="project">
                             <span style={{fontSize:"20px",position:'absolute',bottom:"8px", right:"8px", zIndex:1 , color:'#474545' , display:"flex", alignItems:"center", justifyContent:"center"}}>
@@ -123,7 +122,7 @@ export default class Gallery extends Component {
                             </div>
                         </div>
                         ))}
-                    </section>
+                    </>
                 )}
             </div>
            
