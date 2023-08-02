@@ -34,7 +34,7 @@ export default class DetailedView extends Component {
     }
 
     getComment = (url) => {
-      var s = axios.get(`http://localhost:3001/getComment?name=${url}`)
+      var s = axios.get(`https://4b-alexander-thomson-backend.vercel.app/getComment?name=${url}`)
       .then(response => {
         console.log(response)
         this.setState({
