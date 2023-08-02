@@ -91,8 +91,6 @@ export default class AnnotateView extends Component {
         let func = this.props.func;
         let index = this.props.index
 
-
-
         var styles = {
             zIndex: 995,
             height: "100%",

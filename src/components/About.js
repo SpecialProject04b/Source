@@ -37,9 +37,11 @@ export default class About extends Component {
   toggleImage = (i) => {
     this.setState({
       displayQuestions: !this.state.displayQuestions,
-      index: i,
+      index: i
     });
   }
+
+  
 
   render() {
     let resumeData = this.props.resumeData;
@@ -52,10 +54,10 @@ export default class About extends Component {
     }
 
     return (
-      <div id="page" style={{display:"flex", flexDirection:"column", justifyContent:"space-between", height:"100vh"}}>
-        {this.state.displayQuestions && <DetailedView data={data} func={this.toggleImage} index={this.state.index}/>}
+      <div id="page" style={{display:"flex", flexDirection:"column", justifyContent:"space-between", height: '100vh', overflow: "auto"}}>
+        {this.state.displayQuestions && <DetailedView data={data} func={this.toggleImage}  index={this.state.index}/>}
         <Header resumeData={resumeData} style={{zIndex:'100'}}/>
-          <Gallery data={data} func={this.toggleImage}/>
+          <Gallery data={data} func={this.toggleImage} />
       </div>
     );
   }
