@@ -13,7 +13,7 @@ import chromium from 'chrome-aws-lambda';
 //   puppeteer = require("puppeteer");
 // }
 
-const Filter = require('bad-words');
+// const Filter = require('bad-words');
 
 const app = express(); 
 const port = process.env.PORT || 3001;
