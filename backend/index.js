@@ -12,77 +12,7 @@ const port = process.env.PORT || 3001;
 
 app.use(cors("*"));
 
-app.get('/scrape/:page', async (req, res) => {
-    const pageToScrape = req.params.page;
-    const url = `https://www.alexanderthomsonsociety.org.uk/?paged=${pageToScrape}&cat=54`;
 
-    // const browser = await puppeteer.launch();
-    // const page = await browser.newPage();
-    // await page.setDefaultNavigationTimeout(0);
-    // await page.goto(url);
-    const response = await axios.get(url);
-    const html = response.data;
-
-    const $ = cheerio.load(html);
-    console.log($)
-    const newsItems = [];
-        $('.post-item.template-standard').each((index, element) => {
-            const titleElement = $(element).find('.entry-header .post-title a');
-            const summaryElement = $(element).find('.post-excerpt p');
-            const imageElement = $(element).find('.post-thumbnail img');
-
-            const title = titleElement.text().trim();
-            const link = titleElement.attr('href');
-            const summary = summaryElement.text().trim();
-            const imageUrl = imageElement.attr('data-src');
-
-            newsItems.push({
-                title,
-                link,
-                summary,
-                imageUrl,
-            });
-        });
-
-        if (newsItems.length === 0) {
-            res.status(404).json({ message: 'No data found' });
-        } else {
-            res.status(200).json(newsItems);
-        }
-
-    // const data = await page.evaluate(() => {
-    //     let newsItems = [];
-    //     let elements = document.querySelectorAll('.post-item.template-standard');
-
-    //     for (let element of elements){
-    //         let titleElement = element.querySelector('.entry-header .post-title a');
-    //         let summaryElement = element.querySelector('.post-excerpt p');
-    //         let imageElement = element.querySelector('.post-thumbnail img');
-
-    //         let title = titleElement ? titleElement.innerText : null;
-    //         let link = titleElement ? titleElement.href : null;
-    //         let summary = summaryElement ? summaryElement.innerText : null;
-    //         let imageUrl = imageElement ? imageElement.dataset.src : null;
-
-    //         newsItems.push({
-    //             title: title,
-    //             link: link,
-    //             summary: summary,
-    //             imageUrl: imageUrl
-    //         });
-    //     }
-
-    //     return newsItems;
-    // });
-
-    // await browser.close();
-
-    // if (!data) {
-    //     res.status(404).json({message: 'No data found'});
-    // } else {
-    //     res.status(200).json(data);
-    // }
-});
 
 
 // Middleware to parse JSON and URL-encoded data in the request body
@@ -94,8 +24,6 @@ app.use(express.urlencoded({ extended: true })); // for parsing application/x-ww
 // next(); // Call next() to pass control to the next middleware in the chain
 // });
 
-app.use(express.static(path.join(__dirname, './build')));
-
 mongoose.connect("mongodb+srv://specialproject:specialproject123@cluster0.v0joqli.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 db.on('error' ,err=>{ console.log(err)});
@@ -103,6 +31,40 @@ db.once('open' ,()=>{
   console.log("Connected to database!")
 });
 
+app.get('/scrape/:page', async (req, res) => {
+  const pageToScrape = req.params.page;
+  const url = `https://www.alexanderthomsonsociety.org.uk/?paged=${pageToScrape}&cat=54`;
+
+  const response = await axios.get(url);
+  const html = response.data;
+
+  const $ = cheerio.load(html);
+  // console.log($)
+  const newsItems = [];
+      $('.post-item.template-standard').each((index, element) => {
+          const titleElement = $(element).find('.entry-header .post-title a');
+          const summaryElement = $(element).find('.post-excerpt p');
+          const imageElement = $(element).find('.post-thumbnail img');
+
+          const title = titleElement.text().trim();
+          const link = titleElement.attr('href');
+          const summary = summaryElement.text().trim();
+          const imageUrl = imageElement.attr('data-src');
+
+          newsItems.push({
+              title,
+              link,
+              summary,
+              imageUrl,
+          });
+      });
+
+      if (newsItems.length === 0) {
+          res.status(404).json({ message: 'No data found' });
+      } else {
+          res.status(200).json(newsItems);
+      }
+});
 
 app.get('/resetDatabase', (req, res) => {
     var newReaction  = [
@@ -212,9 +174,9 @@ app.get('/resetDatabase', (req, res) => {
 app.get('/getComment', async (req,res) => {
   const name =  req.query.name;
   const query = {"photoId": name}
-  var data = await Reactions.findOne(query);
+  var data = await Reactions.findOne(query, "comment");
   if (data) {
-    res.json(data)
+    res.json(data.comment)
   }else{
     res.json({
       message: "Failed" 
@@ -223,10 +185,18 @@ app.get('/getComment', async (req,res) => {
 });
 
 app.get('/allFeedback', async (req, res) => {
-
+  Reactions.find({}, 'photoId like').then((data)=>{
     res.json({
-        message: "Worked" 
+      message: "Worked",
+      data
     });
+  })
+  .catch(e=>{
+    res.json({
+      message: "Failed" 
+    });
+  })
+
     // res.send('Hello, this is a GET request!');
 });
 
