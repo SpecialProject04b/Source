@@ -1,8 +1,8 @@
 const express = require('express');
-const path = require('path');
+// const path = require('path');
 const mongoose = require('mongoose');
 const Reactions = require('./reactionSchema.js');
-const cors = require('cors'); 
+// const cors = require('cors'); 
 import chromium from 'chrome-aws-lambda';
 
 // let puppeteer;
@@ -13,12 +13,12 @@ import chromium from 'chrome-aws-lambda';
 //   puppeteer = require("puppeteer");
 // }
 
-// const Filter = require('bad-words');
+const Filter = require('bad-words');
 
 const app = express(); 
 const port = process.env.PORT || 3001;
 
-app.use(cors("*"));
+// app.use(cors("*"));
 
 app.get('/scrape/:page', async (req, res) => {
   // let options = {};
@@ -92,7 +92,7 @@ app.use(express.urlencoded({ extended: true })); // for parsing application/x-ww
 // next(); // Call next() to pass control to the next middleware in the chain
 // });
 
-app.use(express.static(path.join(__dirname, './build')));
+// app.use(express.static(path.join(__dirname, './build')));
 
 mongoose.connect("mongodb+srv://specialproject:specialproject123@cluster0.v0joqli.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
