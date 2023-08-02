@@ -38,7 +38,7 @@ export default class DetailedView extends Component {
       .then(response => {
         console.log(response)
         this.setState({
-          testAnnotate: response.data,
+          testAnnotate: response.data.comment,
         });
       }).catch(error => {
         console.log(error);

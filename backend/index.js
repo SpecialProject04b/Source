@@ -212,9 +212,9 @@ app.get('/resetDatabase', (req, res) => {
 app.get('/getComment', async (req,res) => {
   const name =  req.query.name;
   const query = {"photoId": name}
-  var data = await Reactions.findOne(query, "comment");
+  var data = await Reactions.findOne(query);
   if (data) {
-    res.json(data.comment)
+    res.json(data)
   }else{
     res.json({
       message: "Failed" 
