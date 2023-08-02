@@ -115,7 +115,7 @@ export default class AnnotateView extends Component {
                           <div style={{minWidth:"3000px", top: "-22px",  left: "105%", float:"left",  position: "absolute"}}>
                             <span>
                               <input style={{float:"left", height: "50px", borderRadius: "5px 0px 0px 5px"}}type="text" value={this.inputValue} onChange={this.handleInputChange} placeholder='Click anywhere...'/>
-                              <button style={{float:"left", height: "50px", borderRadius: "0px 5px 5px 0px"}} onClick={(e)=>this.handleSubmit(e, data[index].src)}>Submit</button>
+                              <button style={{float:"left", height: "50px", borderRadius: "0px 5px 5px 0px"}} onClick={(e)=>{this.handleSubmit(e, data[index].src); func()}}>Submit</button>
                             </span>
                           </div>
                         </div>

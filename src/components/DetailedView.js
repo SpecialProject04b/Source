@@ -1,6 +1,6 @@
 import React, { Component, useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faComments, faEye, faX } from '@fortawesome/free-solid-svg-icons'
+import { faComments, faEye, faEyeSlash, faX } from '@fortawesome/free-solid-svg-icons'
 import { TransformWrapper, TransformComponent, KeepScale  } from "react-zoom-pan-pinch";
 import AnnotateView from './AnnotateView';
 import { ReactComponent as Pin } from "react-zoom-pan-pinch/src/stories/assets/pin.svg";
@@ -65,7 +65,13 @@ export default class DetailedView extends Component {
               {this.state.displayAnnotate && <AnnotateView data={data} func={this.toggleImage} index={index}/>}
 
               <div className="toolbars" style={{zIndex:"998", position: "absolute", width:"70%", backgroundColor:"black", height:"46px", display:"flex", flexDirection:"row", justifyContent:"flex-end"}}>
-                <FontAwesomeIcon icon={faEye} onClick={()=>this.toggleViewAnnotate(data[index].src)} style={{width:"46px", fontSize:"x-large", marginTop:"auto", marginBottom:"auto"}}/>
+                {this.state.annotateFlag ? (
+                  <FontAwesomeIcon icon={faEyeSlash} onClick={()=>this.toggleViewAnnotate(data[index].src)} style={{width:"46px", fontSize:"x-large", marginTop:"auto", marginBottom:"auto"}}/>
+                ): (
+                  <FontAwesomeIcon icon={faEye} onClick={()=>this.toggleViewAnnotate(data[index].src)} style={{width:"46px", fontSize:"x-large", marginTop:"auto", marginBottom:"auto"}}/>
+                )}
+                
+                
                 <FontAwesomeIcon icon={faComments} onClick={this.toggleImage} style={{width:"46px", fontSize:"x-large", marginTop:"auto", marginBottom:"auto"}}/>
                 <FontAwesomeIcon icon={faX} onClick={func} style={{width:"46px", fontSize:"x-large", marginTop:"auto", marginBottom:"auto"}}/>
               </div>  

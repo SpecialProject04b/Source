@@ -41,12 +41,10 @@ const NewsLetter = ({ resumeData }) => {
       <Header resumeData={resumeData}/>
       <div className="row">
         <div className="twelve columns collapsed">
-        <h3 style={{textAlign:"center"}}>
-          News Direct from{' '}
-          <a href="https://www.alexanderthomsonsociety.org.uk/?cat=54" target="_blank" rel="noopener noreferrer">
-            Alexander Thomson Society
-          </a>
-        </h3>
+        <p style={{textAlign:"center" , fontSize:"30px", fontWeight:"700"}}>
+          News Direct from Alexander Thomson Society
+    
+        </p>
           {isLoading ? 
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh' }}>
               <Bars type="Bars" color="#00BFFF" height={80} width={80} />
@@ -62,7 +60,7 @@ const NewsLetter = ({ resumeData }) => {
                         alt={item.title} 
                         style={{width: '100%', height: '200px', objectFit: 'cover'}}
                       />
-                      <h1 style = {{color: '#61dafb'}}> {item.title} </h1>
+                      <p style = {{color: '#61dafb' , fontSize:"20px", fontWeight:"700"}}> {item.title} </p>
                       <p>{item.summary}</p>
                     </a>
                   </div>
